@@ -20,6 +20,8 @@
             <div class="auth-buttons">
                 <button class="login-btn">Login</button>
                 <button class="signup-btn">Sign Up</button>
+                <div id="google_translate_element"></div>
+
             </div>
             <!-- AI Chatbot Button -->
             <button class="chatbot-btn">
@@ -248,5 +250,21 @@
             }
         });
     </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              includedLanguages: 'en,hi,ta,te,kn,ml,bn,gu,pa,mr,or,ur,ne,si,as,sd,sa,fr,de,es,zh-CN,ar,ru,ja,ko,it,nl,tr,pt',
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            },
+            'google_translate_element'
+          );
+        }
+      </script>
+      
+      <script type="text/javascript" 
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+      </script>
 </body>
 </html> 
