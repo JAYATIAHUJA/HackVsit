@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Nearby Hospitals - ESwasthya</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="hospitals.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-heartbeat"></i>
+            E+Swasthya
+        </div>
+        <div class="nav-links">
+            <a href="patient.html" class="nav-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <div class="hospitals-main">
+        <!-- Search and Filter Section -->
+        <div class="search-filter">
+            <div class="search-bar">
+                <input type="text" id="location-search" placeholder="Enter location or use current location" class="search-input">
+                <button class="location-btn">
+                    <i class="fas fa-location-dot"></i>
+                    Use My Location
+                </button>
+            </div>
+            <div class="filter-options">
+                <select id="facility-type">
+                    <option value="hospital">All Healthcare Facilities</option>
+                    <option value="hospital">Hospitals</option>
+                    <option value="clinic">Clinics</option>
+                    <option value="pharmacy">Pharmacies</option>
+                    <option value="emergency">Emergency Care</option>
+                </select>
+                <select id="search-radius">
+                    <option value="2">2 km radius</option>
+                    <option value="5" selected>5 km radius</option>
+                    <option value="10">10 km radius</option>
+                    <option value="20">20 km radius</option>
+                </select>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <!-- Map and Results Container -->
+        <div class="map-results-container">
+            <div id="map"></div>
+            <div class="results-list">
+                <h3>Search for nearby healthcare facilities</h3>
+                <p class="initial-message">Use the search bar above or click "Use My Location" to find healthcare facilities near you.</p>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <span>Searching nearby facilities...</span>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Custom JS -->
+    <script src="hospitals.js"></script>
+</body>
+</html> 
