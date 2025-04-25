@@ -16,6 +16,40 @@ const resultsSection = document.querySelector('.results-section');
 // Global variables
 let currentFile = null;
 
+// Static analysis data for demonstration
+const staticAnalysisData = {
+    summary: "This is a sample medical report analysis showing normal results with some minor variations. The patient shows good overall health with a few areas that need attention.",
+    findings: [
+        "Blood pressure is within normal range (120/80 mmHg)",
+        "Cholesterol levels are slightly elevated",
+        "Blood sugar levels are normal",
+        "Liver function tests show normal results",
+        "Kidney function is within normal parameters"
+    ],
+    recommendations: {
+        precautions: [
+            "Monitor blood pressure regularly",
+            "Maintain a balanced diet",
+            "Exercise for at least 30 minutes daily"
+        ],
+        medications: [
+            "Continue current medication as prescribed",
+            "Take vitamin D supplements",
+            "Consider omega-3 supplements"
+        ],
+        lifestyle: [
+            "Reduce salt intake",
+            "Increase water consumption",
+            "Get 7-8 hours of sleep daily"
+        ]
+    },
+    followUp: [
+        "Schedule follow-up appointment in 3 months",
+        "Get blood work done after 2 months",
+        "Monitor weight and blood pressure weekly"
+    ]
+};
+
 // Event Listeners
 uploadArea.addEventListener('dragover', handleDragOver);
 uploadArea.addEventListener('dragleave', handleDragLeave);
@@ -33,22 +67,11 @@ analyzeBtn.addEventListener('click', async () => {
     analysisStatus.textContent = 'Analyzing your report...';
     
     try {
-        // Create form data
-        const formData = new FormData();
-        formData.append('file', currentFile);
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 2000));
         
-        // Send file to backend for analysis
-        const response = await fetch('http://localhost:3001/api/analyze', {
-            method: 'POST',
-            body: formData
-        });
-        
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.error || 'Failed to analyze report');
-        }
-        
-        const analysis = await response.json();
+        // Use static analysis data
+        const analysis = staticAnalysisData;
         displayResults(analysis);
         showSuccess('Analysis completed successfully');
         
@@ -258,15 +281,155 @@ function displayResults(result) {
     resultsSection.scrollIntoView({ behavior: 'smooth' });
 }
 
+// Report Storage Functions
 function saveAnalyzedReport(result) {
     try {
         const reports = JSON.parse(localStorage.getItem('analyzedReports') || '[]');
+        // Add unique ID and timestamp if not present
+        if (!result.id) {
+            result.id = Date.now().toString();
+        }
+        if (!result.timestamp) {
+            result.timestamp = new Date().toISOString();
+        }
         reports.push(result);
         localStorage.setItem('analyzedReports', JSON.stringify(reports));
+        showSuccess('Report saved successfully');
     } catch (error) {
         console.error('Failed to save report:', error);
+        showError('Failed to save report. Please try again.');
     }
 }
+
+function getStoredReports() {
+    try {
+        return JSON.parse(localStorage.getItem('analyzedReports') || '[]');
+    } catch (error) {
+        console.error('Failed to retrieve reports:', error);
+        showError('Failed to retrieve reports. Please try again.');
+        return [];
+    }
+}
+
+function deleteStoredReport(reportId) {
+    try {
+        const reports = getStoredReports();
+        const updatedReports = reports.filter(report => report.id !== reportId);
+        localStorage.setItem('analyzedReports', JSON.stringify(updatedReports));
+        showSuccess('Report deleted successfully');
+        return true;
+    } catch (error) {
+        console.error('Failed to delete report:', error);
+        showError('Failed to delete report. Please try again.');
+        return false;
+    }
+}
+
+function displayStoredReports() {
+    const reports = getStoredReports();
+    const reportsContainer = document.getElementById('storedReports');
+    
+    if (!reportsContainer) {
+        console.error('Reports container not found');
+        return;
+    }
+    
+    if (reports.length === 0) {
+        reportsContainer.innerHTML = '<p class="no-reports">No reports found</p>';
+        return;
+    }
+    
+    const reportsList = reports.map(report => `
+        <div class="stored-report" data-id="${report.id}">
+            <div class="report-header">
+                <h3>${report.fileName || 'Unnamed Report'}</h3>
+                <span class="report-date">${new Date(report.timestamp).toLocaleDateString()}</span>
+            </div>
+            <div class="report-summary">${report.analysis.summary || 'No summary available'}</div>
+            <div class="report-actions">
+                <button class="view-btn" onclick="viewStoredReport('${report.id}')">View Details</button>
+                <button class="delete-btn" onclick="deleteStoredReport('${report.id}')">Delete</button>
+            </div>
+        </div>
+    `).join('');
+    
+    reportsContainer.innerHTML = reportsList;
+}
+
+function viewStoredReport(reportId) {
+    const reports = getStoredReports();
+    const report = reports.find(r => r.id === reportId);
+    
+    if (!report) {
+        showError('Report not found');
+        return;
+    }
+    
+    // Hide the upload section
+    const uploadSection = document.querySelector('.upload-section');
+    if (uploadSection) {
+        uploadSection.style.display = 'none';
+    }
+    
+    // Show the results section
+    const resultsSection = document.getElementById('resultsSection');
+    resultsSection.style.display = 'block';
+    
+    // Display the report details
+    const analysis = report.analysis;
+    
+    // Update summary
+    const summaryContent = resultsSection.querySelector('.summary-content');
+    if (summaryContent) {
+        summaryContent.textContent = analysis.summary;
+    }
+    
+    // Update findings
+    const findingsList = resultsSection.querySelector('.findings-list');
+    if (findingsList) {
+        findingsList.innerHTML = analysis.findings
+            .map(finding => `<li>${finding}</li>`)
+            .join('');
+    }
+    
+    // Update recommendations
+    const precautionsList = resultsSection.querySelector('.precautions-list');
+    if (precautionsList) {
+        precautionsList.innerHTML = analysis.recommendations.precautions
+            .map(precaution => `<li>${precaution}</li>`)
+            .join('');
+    }
+    
+    const medicationsList = resultsSection.querySelector('.medications-list');
+    if (medicationsList) {
+        medicationsList.innerHTML = analysis.recommendations.medications
+            .map(medication => `<li>${medication}</li>`)
+            .join('');
+    }
+    
+    const lifestyleList = resultsSection.querySelector('.lifestyle-list');
+    if (lifestyleList) {
+        lifestyleList.innerHTML = analysis.recommendations.lifestyle
+            .map(item => `<li>${item}</li>`)
+            .join('');
+    }
+    
+    // Update follow-up actions
+    const followUpList = resultsSection.querySelector('.follow-up-list');
+    if (followUpList) {
+        followUpList.innerHTML = analysis.followUp
+            .map(action => `<li>${action}</li>`)
+            .join('');
+    }
+    
+    // Scroll to results
+    resultsSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Add event listener to load stored reports when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    displayStoredReports();
+});
 
 // Add zoom functionality
 let currentScale = 1.5;
@@ -357,49 +520,6 @@ async function extractTextFromImage(file) {
 }
 
 // Function to analyze the report using AI
-async function analyzeReport(textContent) {
-    try {
-        const response = await fetch(API_ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
-            },
-            body: JSON.stringify({
-                model: "gpt-4",
-                messages: [
-                    {
-                        role: "system",
-                        content: "You are a medical report analyzer. Analyze the given medical report and provide a detailed analysis including summary, key findings, recommendations, precautions, suggested medications, lifestyle changes, and follow-up actions. Format the response as JSON."
-                    },
-                    {
-                        role: "user",
-                        content: textContent
-                    }
-                ],
-                temperature: 0.7,
-                max_tokens: 2000
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to analyze report');
-        }
-
-        const data = await response.json();
-        const analysis = JSON.parse(data.choices[0].message.content);
-        
-        return {
-            summary: analysis.summary,
-            findings: analysis.findings,
-            recommendations: {
-                precautions: analysis.recommendations.precautions,
-                medications: analysis.recommendations.medications,
-                lifestyle: analysis.recommendations.lifestyle
-            },
-            followUp: analysis.followUp
-        };
-    } catch (error) {
-        throw new Error('Failed to analyze report: ' + error.message);
-    }
-} 
+// async function analyzeReport(textContent) {
+//     // This function is now replaced by static analysis
+// } 

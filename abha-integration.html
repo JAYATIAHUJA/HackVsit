@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABHA Integration - ESwasthya</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="abha-integration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="patient.html" class="logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>E+Swasthya</span>
+        </a>
+        <div class="nav-links">
+            <a href="patient.html" class="nav-link">Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="abha-main">
+        <div class="abha-container">
+            <!-- ABHA Status Section -->
+            <section class="abha-status-section">
+                <div class="status-card">
+                    <div class="status-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="status-content">
+                        <h2>ABHA Status</h2>
+                        <p class="status-message" id="abhaStatus">Not Connected</p>
+                        <button class="connect-btn" id="connectAbhaBtn">
+                            <i class="fas fa-link"></i>
+                            Connect ABHA
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABHA Benefits Section -->
+            <section class="abha-benefits-section">
+                <h2>Benefits of ABHA Integration</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <h3>Digital Health Records</h3>
+                        <p>Access your complete medical history in one place</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h3>Seamless Hospital Access</h3>
+                        <p>Quick registration at any ABHA-enabled hospital</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Data</h3>
+                        <p>Your health data is protected and encrypted</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <h3>Real-time Updates</h3>
+                        <p>Get instant updates on your health records</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABHA Integration Steps -->
+            <section class="abha-steps-section">
+                <h2>How to Connect Your ABHA</h2>
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Download ABHA App</h3>
+                            <p>Get the official ABHA app from Play Store or App Store</p>
+                            <div class="app-buttons">
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-google-play"></i>
+                                    Play Store
+                                </a>
+                                <a href="#" class="app-btn">
+                                    <i class="fab fa-apple"></i>
+                                    App Store
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Create ABHA Account</h3>
+                            <p>Register using your Aadhaar number and mobile number</p>
+                            <button class="create-btn" id="createAbhaBtn">
+                                <i class="fas fa-user-plus"></i>
+                                Create ABHA Account
+                            </button>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Link with E+Swasthya</h3>
+                            <p>Scan the QR code or enter your ABHA ID</p>
+                            <div class="qr-container">
+                                <div class="qr-code" id="abhaQrCode">
+                                    <i class="fas fa-qrcode"></i>
+                                </div>
+                                <p>Scan to connect</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ABHA FAQ Section -->
+            <section class="abha-faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is ABHA?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>ABHA (Ayushman Bharat Health Account) is a unique health ID that allows you to access and share your health records digitally. It's part of the National Digital Health Mission.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is my data secure?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, your health data is encrypted and protected. You have complete control over who can access your records, and you can revoke access at any time.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How do I update my health records?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Your health records are automatically updated when you visit any ABHA-enabled healthcare facility. You can also manually upload documents through the ABHA app.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Can I use ABHA without Aadhaar?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can create an ABHA account using your mobile number and other government IDs. However, Aadhaar provides the most seamless experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ABHA Connect Modal -->
+    <div class="modal" id="abhaConnectModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Connect Your ABHA Account</h2>
+            <div class="connect-options">
+                <div class="connect-option">
+                    <h3>Scan QR Code</h3>
+                    <div class="qr-code">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <p>Scan with your ABHA app</p>
+                </div>
+                <div class="connect-option">
+                    <h3>Enter ABHA ID</h3>
+                    <form class="abha-form">
+                        <input type="text" placeholder="Enter your ABHA ID" required>
+                        <button type="submit">Connect</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABHA Create Modal -->
+    <div class="modal" id="abhaCreateModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create ABHA Account</h2>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="aadhaar">Aadhaar Number</label>
+                    <input type="text" id="aadhaar" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (Optional)</label>
+                    <input type="email" id="email">
+                </div>
+                <button type="submit">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="abha-integration.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>E+Swasthya</h3>
+                <p>Revolutionizing healthcare through technology</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="patient.html">For Patients</a></li>
+                    <li><a href="hospitals-features.html">For Hospitals</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> support@eswasthya.com</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E+Swasthya. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

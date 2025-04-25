@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Signs Tracker - ESwasthya</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="vital-tracker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="patient.html" class="logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>E+Swasthya</span>
+        </a>
+        <div class="nav-links">
+            <a href="patient.html" class="nav-link">Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="vital-tracker-main">
+        <div class="vital-tracker-container">
+            <!-- Summary Cards Section -->
+            <section class="summary-cards">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>Latest BP</h3>
+                        <p class="summary-value" id="latestBP">--/-- mmHg</p>
+                        <p class="summary-trend" id="bpTrend">No data</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>Heart Rate</h3>
+                        <p class="summary-value" id="latestHR">-- bpm</p>
+                        <p class="summary-trend" id="hrTrend">No data</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>Temperature</h3>
+                        <p class="summary-value" id="latestTemp">--°F</p>
+                        <p class="summary-trend" id="tempTrend">No data</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <div class="summary-content">
+                        <h3>SpO2</h3>
+                        <p class="summary-value" id="latestO2">--%</p>
+                        <p class="summary-trend" id="o2Trend">No data</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vital Signs Input Section -->
+            <section class="vital-input-section">
+                <div class="section-header">
+                    <h2>Record Vital Signs</h2>
+                    <div class="section-actions">
+                        <button class="action-btn" id="exportBtn">
+                            <i class="fas fa-download"></i>
+                            Export Data
+                        </button>
+                        <button class="action-btn" id="printBtn">
+                            <i class="fas fa-print"></i>
+                            Print Report
+                        </button>
+                    </div>
+                </div>
+                <div class="vital-signs-form">
+                    <div class="form-group">
+                        <label for="bloodPressure">Blood Pressure (mmHg)</label>
+                        <div class="bp-inputs">
+                            <input type="number" id="systolic" placeholder="Systolic" min="60" max="200">
+                            <span>/</span>
+                            <input type="number" id="diastolic" placeholder="Diastolic" min="40" max="120">
+                        </div>
+                        <div class="input-info">
+                            <span class="normal-range">Normal: 120/80 mmHg</span>
+                            <span class="input-hint">Enter values between 60-200/40-120</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="heartRate">Heart Rate (bpm)</label>
+                        <input type="number" id="heartRate" placeholder="Enter heart rate" min="40" max="200">
+                        <div class="input-info">
+                            <span class="normal-range">Normal: 60-100 bpm</span>
+                            <span class="input-hint">Enter values between 40-200</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="temperature">Temperature (°F)</label>
+                        <input type="number" id="temperature" placeholder="Enter temperature" min="95" max="105" step="0.1">
+                        <div class="input-info">
+                            <span class="normal-range">Normal: 98.6°F</span>
+                            <span class="input-hint">Enter values between 95-105</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="oxygenSaturation">Oxygen Saturation (%)</label>
+                        <input type="number" id="oxygenSaturation" placeholder="Enter SpO2" min="70" max="100">
+                        <div class="input-info">
+                            <span class="normal-range">Normal: 95-100%</span>
+                            <span class="input-hint">Enter values between 70-100</span>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="add-vitals-btn" id="addVitalsBtn">
+                            <i class="fas fa-plus"></i>
+                            Add Vital Signs
+                        </button>
+                        <button class="clear-btn" id="clearBtn">
+                            <i class="fas fa-eraser"></i>
+                            Clear Form
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vital Signs History Section -->
+            <section class="vital-history-section">
+                <div class="section-header">
+                    <h2>Vital Signs History</h2>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Search records...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <select id="filterSelect" class="filter-select">
+                            <option value="all">All Records</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="vital-signs-history" id="vitalSignsHistory">
+                    <!-- Vital signs history will be displayed here -->
+                </div>
+            </section>
+
+            <!-- Vital Signs Charts Section -->
+            <section class="vital-charts-section">
+                <div class="section-header">
+                    <h2>Vital Signs Trends</h2>
+                    <div class="section-actions">
+                        <select id="chartPeriod" class="chart-period">
+                            <option value="week">Last Week</option>
+                            <option value="month">Last Month</option>
+                            <option value="year">Last Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Blood Pressure Trend</h3>
+                        <canvas id="bpChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Heart Rate Trend</h3>
+                        <canvas id="hrChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Temperature Trend</h3>
+                        <canvas id="tempChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Oxygen Saturation Trend</h3>
+                        <canvas id="o2Chart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="vital-tracker.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>E+Swasthya</h3>
+                <p>Revolutionizing healthcare through technology</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="patient.html">For Patients</a></li>
+                    <li><a href="hospitals-features.html">For Hospitals</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> support@eswasthya.com</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E+Swasthya. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
