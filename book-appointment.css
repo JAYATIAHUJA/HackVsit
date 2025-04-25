@@ -1,0 +1,239 @@
+/* Appointment Booking Styles */
+.appointment-main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.appointment-container {
+    display: grid;
+    gap: 2rem;
+}
+
+/* Booking Section */
+.booking-section {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-section h2 {
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.booking-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: #666;
+    font-weight: 500;
+}
+
+.form-group select,
+.form-group input[type="date"],
+.form-group textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.book-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background: #45a049;
+}
+
+/* Summary Section */
+.summary-section {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.summary-section h2 {
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.summary-item i {
+    font-size: 1.5rem;
+    color: #4CAF50;
+}
+
+.summary-info h3 {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.summary-info p {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Upcoming Appointments Section */
+.upcoming-section {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.upcoming-section h2 {
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.appointments-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.appointment-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.appointment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.appointment-header h3 {
+    color: #333;
+    margin: 0;
+}
+
+.status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status.confirmed {
+    background: #e8f5e9;
+    color: #4CAF50;
+}
+
+.status.pending {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.appointment-details {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.appointment-details p {
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.appointment-details i {
+    color: #4CAF50;
+}
+
+.appointment-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.reschedule-btn,
+.cancel-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.reschedule-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+}
+
+.reschedule-btn:hover {
+    background: #45a049;
+}
+
+.cancel-btn {
+    background: none;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+.cancel-btn:hover {
+    background: #dc3545;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .appointment-main {
+        margin: 1rem auto;
+    }
+
+    .summary-card {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-actions {
+        flex-direction: column;
+    }
+
+    .reschedule-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+} 

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - E+Swasthya</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="book-appointment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="patient.html" class="logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>E+Swasthya</span>
+        </a>
+        <div class="nav-links">
+            <a href="patient.html" class="nav-link">Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="appointment-main">
+        <div class="appointment-container">
+            <!-- Appointment Booking Form -->
+            <section class="booking-section">
+                <h2>Book an Appointment</h2>
+                <form class="booking-form" id="appointmentForm">
+                    <!-- Hospital Selection -->
+                    <div class="form-group">
+                        <label for="hospital">Select Hospital</label>
+                        <select id="hospital" required>
+                            <option value="">Choose a hospital</option>
+                            <option value="1">Apollo Hospital</option>
+                            <option value="2">Fortis Hospital</option>
+                            <option value="3">Max Super Speciality</option>
+                            <option value="4">Medanta Hospital</option>
+                        </select>
+                    </div>
+
+                    <!-- Department Selection -->
+                    <div class="form-group">
+                        <label for="department">Select Department</label>
+                        <select id="department" required>
+                            <option value="">Choose a department</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="dermatology">Dermatology</option>
+                        </select>
+                    </div>
+
+                    <!-- Doctor Selection -->
+                    <div class="form-group">
+                        <label for="doctor">Select Doctor</label>
+                        <select id="doctor" required>
+                            <option value="">Choose a doctor</option>
+                            <option value="1">Dr. Rajesh Kumar</option>
+                            <option value="2">Dr. Priya Sharma</option>
+                            <option value="3">Dr. Amit Patel</option>
+                            <option value="4">Dr. Neha Gupta</option>
+                        </select>
+                    </div>
+
+                    <!-- Date Selection -->
+                    <div class="form-group">
+                        <label for="date">Select Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+
+                    <!-- Time Slot Selection -->
+                    <div class="form-group">
+                        <label for="time">Select Time Slot</label>
+                        <select id="time" required>
+                            <option value="">Choose a time slot</option>
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                        </select>
+                    </div>
+
+                    <!-- Reason for Visit -->
+                    <div class="form-group">
+                        <label for="reason">Reason for Visit</label>
+                        <textarea id="reason" rows="3" placeholder="Please describe your symptoms or reason for visit"></textarea>
+                    </div>
+
+                    <!-- Additional Notes -->
+                    <div class="form-group">
+                        <label for="notes">Additional Notes</label>
+                        <textarea id="notes" rows="2" placeholder="Any additional information you'd like to share"></textarea>
+                    </div>
+
+                    <button type="submit" class="book-btn">Book Appointment</button>
+                </form>
+            </section>
+
+            <!-- Appointment Summary -->
+            <section class="summary-section">
+                <h2>Appointment Summary</h2>
+                <div class="summary-card">
+                    <div class="summary-item">
+                        <i class="fas fa-hospital"></i>
+                        <div class="summary-info">
+                            <h3>Hospital</h3>
+                            <p id="summaryHospital">Not selected</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-user-md"></i>
+                        <div class="summary-info">
+                            <h3>Doctor</h3>
+                            <p id="summaryDoctor">Not selected</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-calendar"></i>
+                        <div class="summary-info">
+                            <h3>Date</h3>
+                            <p id="summaryDate">Not selected</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="summary-info">
+                            <h3>Time</h3>
+                            <p id="summaryTime">Not selected</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Appointments -->
+            <section class="upcoming-section">
+                <h2>Your Upcoming Appointments</h2>
+                <div class="appointments-list">
+                    <div class="appointment-card">
+                        <div class="appointment-header">
+                            <h3>Dr. Rajesh Kumar</h3>
+                            <span class="status confirmed">Confirmed</span>
+                        </div>
+                        <div class="appointment-details">
+                            <p><i class="fas fa-hospital"></i> Apollo Hospital</p>
+                            <p><i class="fas fa-calendar"></i> March 15, 2024</p>
+                            <p><i class="fas fa-clock"></i> 10:00 AM</p>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="reschedule-btn">Reschedule</button>
+                            <button class="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="appointment-card">
+                        <div class="appointment-header">
+                            <h3>Dr. Priya Sharma</h3>
+                            <span class="status pending">Pending</span>
+                        </div>
+                        <div class="appointment-details">
+                            <p><i class="fas fa-hospital"></i> Fortis Hospital</p>
+                            <p><i class="fas fa-calendar"></i> March 20, 2024</p>
+                            <p><i class="fas fa-clock"></i> 02:00 PM</p>
+                        </div>
+                        <div class="appointment-actions">
+                            <button class="reschedule-btn">Reschedule</button>
+                            <button class="cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>E+Swasthya</h3>
+                <p>Revolutionizing healthcare through technology</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="patient.html">For Patients</a></li>
+                    <li><a href="hospitals-features.html">For Hospitals</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> support@eswasthya.com</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E+Swasthya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="book-appointment.js"></script>
+</body>
+</html> 

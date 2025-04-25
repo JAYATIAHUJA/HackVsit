@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superuser Dashboard - E+Swasthya</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="superuser.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="patient.html" class="logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>E+Swasthya</span>
+        </a>
+        <div class="nav-links">
+            <a href="patient.html" class="nav-link">Back to Dashboard</a>
+            <div class="user-info">
+                <i class="fas fa-user-shield"></i>
+                <span>Superuser</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="superuser-main">
+        <div class="dashboard-container">
+            <!-- Overview Section -->
+            <section class="overview-section">
+                <h2>System Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-info">
+                            <h3>Total Users</h3>
+                            <p>1,234</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-hospital"></i>
+                        <div class="stat-info">
+                            <h3>Hospitals</h3>
+                            <p>56</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-file-medical"></i>
+                        <div class="stat-info">
+                            <h3>Reports</h3>
+                            <p>8,901</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="stat-info">
+                            <h3>Active Sessions</h3>
+                            <p>89</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Management Section -->
+            <section class="management-section">
+                <h2>User Management</h2>
+                <div class="management-grid">
+                    <div class="management-card">
+                        <h3>User Roles</h3>
+                        <div class="role-list">
+                            <div class="role-item">
+                                <span>Admin</span>
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                            <div class="role-item">
+                                <span>Doctor</span>
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                            <div class="role-item">
+                                <span>Patient</span>
+                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="management-card">
+                        <h3>Access Control</h3>
+                        <div class="access-list">
+                            <div class="access-item">
+                                <span>Report Access</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="access-item">
+                                <span>ABHA Integration</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="access-item">
+                                <span>Vitals Tracking</span>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- System Settings Section -->
+            <section class="settings-section">
+                <h2>System Settings</h2>
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>General Settings</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>System Name</label>
+                                <input type="text" value="E+Swasthya">
+                            </div>
+                            <div class="form-group">
+                                <label>Maintenance Mode</label>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Data Backup</label>
+                                <button class="backup-btn">Backup Now</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="settings-card">
+                        <h3>Security Settings</h3>
+                        <form class="settings-form">
+                            <div class="form-group">
+                                <label>Two-Factor Auth</label>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Session Timeout</label>
+                                <select>
+                                    <option>15 minutes</option>
+                                    <option>30 minutes</option>
+                                    <option>1 hour</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Password Policy</label>
+                                <button class="policy-btn">Configure</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Log Section -->
+            <section class="activity-section">
+                <h2>Activity Log</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>New User Registration</h4>
+                            <p>John Doe registered as a patient</p>
+                            <span class="activity-time">2 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-file-upload"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Report Upload</h4>
+                            <p>Medical report uploaded by Dr. Smith</p>
+                            <span class="activity-time">15 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>System Update</h4>
+                            <p>System settings updated by Admin</p>
+                            <span class="activity-time">1 hour ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>E+Swasthya</h3>
+                <p>Revolutionizing healthcare through technology</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="patient.html">For Patients</a></li>
+                    <li><a href="hospitals-features.html">For Hospitals</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> support@eswasthya.com</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E+Swasthya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="superuser.js"></script>
+</body>
+</html> 
