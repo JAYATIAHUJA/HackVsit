@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E+Swasthya - Patient Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="patient.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="patient.html" class="logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>E+Swasthya</span>
+        </a>
+        <div class="nav-links">
+            <div class="auth-buttons">
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
+            </div>
+            <!-- AI Chatbot Button -->
+            <button class="chatbot-btn">
+                <i class="fas fa-robot"></i>
+                <span>AI Assistant</span>
+            </button>
+            <a href="#" class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- AI Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> AI Health Assistant</h3>
+            <div class="chatbot-controls">
+                <button class="voice-btn" title="Voice Assistant">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button class="close-chat">×</button>
+            </div>
+        </div>
+        <div class="chatbot-messages">
+            <div class="message bot-message">
+                Hello! I'm your AI health assistant. How can I help you today?
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message...">
+            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+            <button class="voice-input-btn"><i class="fas fa-microphone"></i></button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="patient-main">
+        <!-- ABHA Section -->
+        <section class="abha-section">
+            <h3>Connect with ABHA</h3>
+            <div class="abha-buttons">
+                <button class="abha-btn" id="abhaLogin">ABHA Login</button>
+                <button class="abha-btn" id="abhaSignup">ABHA Sign Up</button>
+            </div>
+        </section>
+
+        <!-- Quick Access Section -->
+        <section class="quick-access">
+            <a href="find-hospitals.html" class="quick-access-card">
+                <div class="quick-access-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3>Find Nearby Hospitals</h3>
+                <p>Search for nearby hospitals and clinics</p>
+            </a>
+            <a href="appointments.html" class="quick-access-card">
+                <div class="quick-access-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Book Appointment</h3>
+                <p>Schedule your next doctor visit</p>
+            </a>
+        </section>
+
+        <!-- Hygiene & Wellness Education -->
+        <section class="education-section">
+            <div class="education-content">
+                <h2>Hygiene & Wellness Education</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <i class="fas fa-hand-sparkles"></i>
+                        <h4>Personal Hygiene</h4>
+                        <p>Learn about maintaining good personal hygiene habits</p>
+                    </div>
+                    <div class="education-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h4>Health Tips</h4>
+                        <p>Daily health tips and preventive care</p>
+                    </div>
+                    <div class="education-card">
+                        <i class="fas fa-utensils"></i>
+                        <h4>Nutrition Guide</h4>
+                        <p>Healthy eating habits and diet plans</p>
+                    </div>
+                    <div class="education-card">
+                        <i class="fas fa-running"></i>
+                        <h4>Fitness</h4>
+                        <p>Exercise routines and physical wellness</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="patient-features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI Report Analyzer</h3>
+                <p>Get intelligent analysis of your medical reports</p>
+                <a href="report-analyzer.html" class="feature-btn">Try Now</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-file-medical"></i>
+                </div>
+                <h3>Report Storage</h3>
+                <p>Securely store and access your medical reports</p>
+                <a href="report-storage.html" class="feature-btn">View Reports</a>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Vitals Tracker</h3>
+                <p>Monitor your health vitals in real-time</p>
+                <button class="feature-btn">Track Vitals</button>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3>ABHA Integration</h3>
+                <p>Seamless integration with Ayushman Bharat</p>
+                <button class="feature-btn">Connect</button>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Yoga & Wellness</h3>
+                <p>Access personalized yoga and wellness programs</p>
+                <button class="feature-btn">Explore</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form class="login-form">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p class="form-footer">Don't have an account? <a href="#" class="switch-to-signup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Account</h2>
+            <form class="signup-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+                <p class="form-footer">Already have an account? <a href="#" class="switch-to-login">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ABHA Login Modal -->
+    <div class="modal" id="abhaLoginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>ABHA Login</h2>
+            <div class="abha-modal-content">
+                <p>Scan the QR code with your ABHA app to login</p>
+                <div class="abha-qr">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <p>Or enter your ABHA ID</p>
+                <form class="abha-form">
+                    <input type="text" placeholder="ABHA ID" required>
+                    <button type="submit">Login with ABHA</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABHA Signup Modal -->
+    <div class="modal" id="abhaSignupModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create ABHA Account</h2>
+            <div class="abha-modal-content">
+                <p>Scan the QR code with your ABHA app to create an account</p>
+                <div class="abha-qr">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <p>Or create your ABHA ID</p>
+                <form class="abha-form">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" placeholder="Aadhaar Number" required>
+                    <input type="text" placeholder="Mobile Number" required>
+                    <button type="submit">Create ABHA ID</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="patient.js"></script>
+    <script src="chatbot.js"></script>
+
+    <!-- Initialize chatbot after DOM loads -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add initial message when page loads
+            const chatMessages = document.querySelector('.chatbot-messages');
+            if (chatMessages) {
+                chatMessages.innerHTML = '<div class="message bot-message">Hello! I\'m your E-Swasthya medical assistant. How can I help you today? Please describe your health concern or symptoms.</div>';
+            }
+
+            // Show chatbot on page load
+            const chatbotWidget = document.querySelector('.chatbot-widget');
+            if (chatbotWidget) {
+                chatbotWidget.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 

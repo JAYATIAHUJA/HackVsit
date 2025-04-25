@@ -1,0 +1,819 @@
+/* Patient Page Specific Styles */
+.patient-main {
+    padding: 8rem 2rem 4rem;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Logo Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.logo i {
+    font-size: 1.8rem;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    background: #3498db;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.login-btn, .signup-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.login-btn {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.signup-btn {
+    background-color: white;
+    color: #3498db;
+}
+
+.login-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.signup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Gender Switch Styles */
+.gender-switch {
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 25px;
+    padding: 0.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gender-btn {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.gender-btn.active {
+    background: white;
+    color: #2193b0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Login/Signup Buttons */
+.login-btn, .signup-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: white;
+    color: #4f46e5;
+    border: 2px solid #4f46e5;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+/* ABHA Login/Signup Section */
+.abha-section {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.abha-section h3 {
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.abha-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.abha-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #4f46e5;
+    border-radius: 25px;
+    background: white;
+    color: #4f46e5;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.abha-btn:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+/* Patient Features Grid */
+.patient-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #4834d4, #686de0);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    transition: all 0.3s ease;
+}
+
+.feature-icon i {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+}
+
+.feature-card:hover .feature-icon i {
+    background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.feature-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 24px;
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.feature-btn:hover {
+    background: #5849d1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #64748b;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1e293b;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-form input, .signup-form input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.login-form button, .signup-form button {
+    padding: 0.75rem;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 1rem;
+    color: #64748b;
+}
+
+.form-footer a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ABHA Modal Styles */
+.abha-modal-content {
+    text-align: center;
+}
+
+.abha-modal-content p {
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.abha-qr {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1.5rem;
+    background: #f1f5f9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.abha-qr i {
+    font-size: 4rem;
+    color: #4f46e5;
+}
+
+/* Quick Access Section */
+.quick-access {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.quick-access-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #2d3436;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.quick-access-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.quick-access-icon {
+    font-size: 2.5rem;
+    color: #ff4757;
+    margin-bottom: 20px;
+}
+
+.quick-access-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #2d3436;
+}
+
+.quick-access-card p {
+    color: #636e72;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Education Section Styles */
+.education-section {
+    padding: 4rem 0;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.education-content h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    position: relative;
+}
+
+.education-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #2193b0, #6dd5ed);
+    border-radius: 2px;
+}
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 2rem;
+}
+
+.education-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.education-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #2193b0, #6dd5ed);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.education-card:hover::before {
+    transform: scaleX(1);
+}
+
+.education-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.education-card i {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+.education-card h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.education-card p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* AI Chatbot Styles */
+.chatbot-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.chatbot-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.chatbot-btn i {
+    font-size: 1.2rem;
+}
+
+.chatbot-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    display: none;
+}
+
+.chatbot-widget.active {
+    display: flex;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.chatbot-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chatbot-controls button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.chatbot-controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.bot-message {
+    background: #f0f2f5;
+    margin-right: auto;
+}
+
+.user-message {
+    background: #3498db;
+    color: white;
+    margin-left: auto;
+}
+
+.chatbot-input {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 0.9rem;
+}
+
+.chatbot-input button {
+    background: #4834d4;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-input button:hover {
+    background: #686de0;
+    transform: translateY(-2px);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px !important;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: #3498db;
+    border-radius: 50%;
+    animation: typing 1s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Voice Recording State */
+.voice-input-btn.recording {
+    background: #ff4757 !important;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .auth-buttons {
+        gap: 0.5rem;
+    }
+
+    .login-btn, .signup-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .gender-switch {
+        margin: 0 0.5rem;
+    }
+
+    .gender-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .education-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 1rem;
+    }
+
+    .chatbot-widget {
+        width: 300px;
+        height: 450px;
+        bottom: 1rem;
+        right: 1rem;
+    }
+    
+    .quick-access {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+    
+    .quick-access-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chatbot-widget {
+        width: calc(100% - 2rem);
+        height: 400px;
+    }
+}
+
+/* Ensure all sections are visible */
+section {
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Add some spacing between sections */
+section + section {
+    margin-top: 2rem;
+}
+
+/* Make sure all cards are visible */
+.quick-access-card,
+.education-card,
+.feature-card {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+/* Ensure buttons are visible */
+.quick-access-btn,
+.feature-btn,
+.abha-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Preview Modal Styles */
+.preview-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.preview-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    overflow: auto;
+}
+
+.close-preview {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1001;
+}
+
+.preview-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
