@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Report Analyzer - ESwasthya</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="report-analyzer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="patient.html" class="logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>E+Swasthya</span>
+        </a>
+        <div class="nav-links">
+            <a href="patient.html" class="nav-link">Back to Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="analyzer-main">
+        <div class="analyzer-container">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2>Upload Medical Reports</h2>
+                <p class="upload-info">Upload your medical reports for AI analysis. Supported formats: PDF, JPG, PNG</p>
+                
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your medical reports here</p>
+                    <p>or</p>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fileInput" accept=".pdf,.jpg,.jpeg,.png" class="file-input">
+                        <label for="fileInput" class="file-label">
+                            <i class="fas fa-file-medical"></i>
+                            Choose Files
+                        </label>
+                    </div>
+                </div>
+
+                <div class="uploaded-files" id="uploadedFiles">
+                    <!-- Uploaded files will appear here -->
+                </div>
+
+                <button class="analyze-btn" id="analyzeBtn" disabled>
+                    <i class="fas fa-brain"></i>
+                    Analyze Reports
+                </button>
+            </section>
+
+            <!-- Document Preview Modal -->
+            <div class="preview-modal" id="previewModal">
+                <div class="preview-content">
+                    <span class="close-preview">&times;</span>
+                    <h3>Document Preview</h3>
+                    <div class="preview-container" id="previewContainer">
+                        <!-- Preview will be shown here -->
+                    </div>
+                </div>
+            </div>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>Analysis Results</h2>
+                
+                <div class="results-container">
+                    <div class="result-card summary">
+                        <h3>Summary</h3>
+                        <div class="summary-content">
+                            <!-- AI-generated summary will appear here -->
+                        </div>
+                    </div>
+
+                    <div class="result-card findings">
+                        <h3>Key Findings</h3>
+                        <ul class="findings-list">
+                            <!-- AI-generated findings will appear here -->
+                        </ul>
+                    </div>
+
+                    <div class="result-card recommendations">
+                        <h3>Recommendations</h3>
+                        <div class="recommendations-content">
+                            <h4>Precautions</h4>
+                            <ul class="precautions-list">
+                                <!-- AI-generated precautions will appear here -->
+                            </ul>
+
+                            <h4>Suggested Medications</h4>
+                            <ul class="medications-list">
+                                <!-- AI-generated medication suggestions will appear here -->
+                            </ul>
+
+                            <h4>Lifestyle Changes</h4>
+                            <ul class="lifestyle-list">
+                                <!-- AI-generated lifestyle recommendations will appear here -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="result-card follow-up">
+                        <h3>Follow-up Actions</h3>
+                        <ul class="follow-up-list">
+                            <!-- AI-generated follow-up recommendations will appear here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="save-btn" id="saveResultsBtn">
+                        <i class="fas fa-save"></i>
+                        Save Results
+                    </button>
+                    <button class="download-btn" id="downloadReportBtn">
+                        <i class="fas fa-download"></i>
+                        Download Report
+                    </button>
+                    <button class="share-btn" id="shareReportBtn">
+                        <i class="fas fa-share-alt"></i>
+                        Share with Doctor
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Analyzing your reports...</p>
+            <p class="analysis-status">This may take a few moments</p>
+        </div>
+    </main>
+
+    <!-- Add PDF.js for PDF preview -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+    <script src="report-analyzer.js"></script>
+</body>
+</html> 
