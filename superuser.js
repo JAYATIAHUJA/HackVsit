@@ -4,57 +4,195 @@ const accessItems = document.querySelectorAll('.access-item');
 const settingsForms = document.querySelectorAll('.settings-form');
 const backupBtn = document.querySelector('.backup-btn');
 const policyBtn = document.querySelector('.policy-btn');
+const userList = document.querySelector('.user-list');
+const activityLog = document.querySelector('.activity-log');
 
-// Handle role editing
+// API Functions
+async function fetchUsers() {
+    try {
+        const response = await fetch('/api/superuser/users', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        const users = await response.json();
+        displayUsers(users);
+    } catch (error) {
+        showError('Failed to fetch users');
+        console.error('Error:', error);
+    }
+}
+
+async function updateUserRole(userId, role) {
+    try {
+        const response = await fetch('/api/superuser/user/role', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ userId, role })
+        });
+        if (response.ok) {
+            showSuccess('User role updated successfully');
+            fetchUsers(); // Refresh user list
+        } else {
+            throw new Error('Failed to update user role');
+        }
+    } catch (error) {
+        showError(error.message);
+        console.error('Error:', error);
+    }
+}
+
+async function fetchActivityLog() {
+    try {
+        const response = await fetch('/api/superuser/activity-log', {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        const logs = await response.json();
+        displayActivityLog(logs);
+    } catch (error) {
+        showError('Failed to fetch activity logs');
+        console.error('Error:', error);
+    }
+}
+
+async function createBackup() {
+    try {
+        const response = await fetch('/api/superuser/system-backup', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+        if (response.ok) {
+            const result = await response.json();
+            showSuccess('Backup created successfully');
+            console.log('Backup path:', result.path);
+        } else {
+            throw new Error('Failed to create backup');
+        }
+    } catch (error) {
+        showError(error.message);
+        console.error('Error:', error);
+    }
+}
+
+async function updateSystemSetting(setting, value) {
+    try {
+        const response = await fetch('/api/superuser/settings', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ setting, value })
+        });
+        if (response.ok) {
+            showSuccess('Setting updated successfully');
+        } else {
+            throw new Error('Failed to update setting');
+        }
+    } catch (error) {
+        showError(error.message);
+        console.error('Error:', error);
+    }
+}
+
+// Display Functions
+function displayUsers(users) {
+    if (!userList) return;
+    
+    userList.innerHTML = users.map(user => `
+        <div class="user-item" data-id="${user.id}">
+            <div class="user-info">
+                <h4>${user.full_name}</h4>
+                <p>${user.email}</p>
+                <span class="user-role">${user.role}</span>
+            </div>
+            <div class="user-actions">
+                <select class="role-select" onchange="updateUserRole('${user.id}', this.value)">
+                    <option value="user" ${user.role === 'user' ? 'selected' : ''}>User</option>
+                    <option value="doctor" ${user.role === 'doctor' ? 'selected' : ''}>Doctor</option>
+                    <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>Admin</option>
+                    <option value="superuser" ${user.role === 'superuser' ? 'selected' : ''}>Superuser</option>
+                </select>
+                <button class="delete-btn" onclick="deleteUser('${user.id}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function displayActivityLog(logs) {
+    if (!activityLog) return;
+    
+    activityLog.innerHTML = logs.map(log => `
+        <div class="activity-item">
+            <div class="activity-icon">
+                <i class="fas ${getActivityIcon(log.type)}"></i>
+            </div>
+            <div class="activity-details">
+                <h4>${log.action}</h4>
+                <p>${log.description}</p>
+                <span class="activity-time">${new Date(log.created_at).toLocaleString()}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+function getActivityIcon(type) {
+    const icons = {
+        'login': 'fa-sign-in-alt',
+        'user': 'fa-user',
+        'report': 'fa-file-medical',
+        'system': 'fa-cog',
+        'default': 'fa-info-circle'
+    };
+    return icons[type] || icons.default;
+}
+
+// Event Handlers
 function handleRoleEdit(event) {
     const roleItem = event.currentTarget.parentElement;
     const roleName = roleItem.querySelector('span').textContent;
     
-    // Show edit modal or form (to be implemented)
-    console.log(`Editing role: ${roleName}`);
+    // Show edit modal
+    const newRole = prompt('Enter new role name:', roleName);
+    if (newRole && newRole !== roleName) {
+        updateSystemSetting('role_' + roleName.toLowerCase(), newRole);
+    }
 }
 
-// Handle access control toggle
 function handleAccessToggle(event) {
     const accessItem = event.currentTarget.parentElement;
     const accessName = accessItem.querySelector('span').textContent;
     const isEnabled = event.target.checked;
     
-    // Update access control (to be implemented)
-    console.log(`${accessName} access ${isEnabled ? 'enabled' : 'disabled'}`);
+    updateSystemSetting('access_' + accessName.toLowerCase().replace(/\s+/g, '_'), isEnabled);
 }
 
-// Handle settings form submission
 function handleSettingsSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
     
-    // Update settings (to be implemented)
-    console.log('Settings updated:', data);
-    showSuccess('Settings updated successfully');
+    Object.entries(data).forEach(([key, value]) => {
+        updateSystemSetting(key, value);
+    });
 }
 
-// Handle backup
 function handleBackup() {
-    // Simulate backup process
-    backupBtn.disabled = true;
-    backupBtn.textContent = 'Backing up...';
-    
-    setTimeout(() => {
-        backupBtn.disabled = false;
-        backupBtn.textContent = 'Backup Now';
-        showSuccess('Backup completed successfully');
-    }, 2000);
+    if (confirm('Are you sure you want to create a system backup?')) {
+        createBackup();
+    }
 }
 
-// Handle password policy configuration
-function handlePasswordPolicy() {
-    // Show password policy modal (to be implemented)
-    console.log('Configuring password policy');
-}
-
-// Show success message
+// Message Functions
 function showSuccess(message) {
     const successDiv = document.createElement('div');
     successDiv.className = 'success-message';
@@ -63,7 +201,6 @@ function showSuccess(message) {
     setTimeout(() => successDiv.remove(), 5000);
 }
 
-// Show error message
 function showError(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
@@ -73,30 +210,26 @@ function showError(message) {
 }
 
 // Event Listeners
-roleItems.forEach(item => {
-    const editBtn = item.querySelector('.edit-btn');
-    editBtn.addEventListener('click', handleRoleEdit);
-});
-
-accessItems.forEach(item => {
-    const toggle = item.querySelector('input[type="checkbox"]');
-    toggle.addEventListener('change', handleAccessToggle);
-});
-
-settingsForms.forEach(form => {
-    form.addEventListener('submit', handleSettingsSubmit);
-});
-
-if (backupBtn) {
-    backupBtn.addEventListener('click', handleBackup);
-}
-
-if (policyBtn) {
-    policyBtn.addEventListener('click', handlePasswordPolicy);
-}
-
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Add any initialization code here
-    console.log('Superuser dashboard initialized');
+    fetchUsers();
+    fetchActivityLog();
+    
+    roleItems.forEach(item => {
+        const editBtn = item.querySelector('.edit-btn');
+        editBtn?.addEventListener('click', handleRoleEdit);
+    });
+
+    accessItems.forEach(item => {
+        const toggle = item.querySelector('input[type="checkbox"]');
+        toggle?.addEventListener('change', handleAccessToggle);
+    });
+
+    settingsForms.forEach(form => {
+        form.addEventListener('submit', handleSettingsSubmit);
+    });
+
+    backupBtn?.addEventListener('click', handleBackup);
+
+    // Refresh data periodically
+    setInterval(fetchActivityLog, 30000); // Every 30 seconds
 }); 

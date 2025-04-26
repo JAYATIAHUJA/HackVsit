@@ -666,4 +666,34 @@ body {
     padding: 1rem;
     font-style: italic;
     font-size: 0.9rem;
+}
+
+/* No Reports Message Styles */
+.no-reports {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #636e72;
+}
+
+.no-reports i {
+    font-size: 3rem;
+    color: #b2bec3;
+    margin-bottom: 1rem;
+}
+
+.no-reports p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Drag and Drop Styles */
+.upload-area.drag-over {
+    border-color: #3498db;
+    background-color: rgba(52, 152, 219, 0.05);
+    transform: scale(1.02);
+}
+
+.upload-area.drag-over i {
+    color: #3498db;
+    transform: scale(1.1);
 } 

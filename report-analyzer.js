@@ -522,4 +522,9 @@ async function extractTextFromImage(file) {
 // Function to analyze the report using AI
 // async function analyzeReport(textContent) {
 //     // This function is now replaced by static analysis
-// } 
+// }
+
+// Add event listener to load stored reports when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    displayStoredReports();
+});

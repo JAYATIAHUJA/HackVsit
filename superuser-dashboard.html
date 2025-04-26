@@ -67,20 +67,9 @@
                 <h2>User Management</h2>
                 <div class="management-grid">
                     <div class="management-card">
-                        <h3>User Roles</h3>
-                        <div class="role-list">
-                            <div class="role-item">
-                                <span>Admin</span>
-                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
-                            </div>
-                            <div class="role-item">
-                                <span>Doctor</span>
-                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
-                            </div>
-                            <div class="role-item">
-                                <span>Patient</span>
-                                <button class="edit-btn"><i class="fas fa-edit"></i></button>
-                            </div>
+                        <h3>User List</h3>
+                        <div class="user-list">
+                            <!-- Users will be displayed here -->
                         </div>
                     </div>
                     <div class="management-card">
@@ -101,7 +90,7 @@
                                 </label>
                             </div>
                             <div class="access-item">
-                                <span>Vitals Tracking</span>
+                                <span>Hospital Management</span>
                                 <label class="switch">
                                     <input type="checkbox" checked>
                                     <span class="slider"></span>
@@ -121,43 +110,39 @@
                         <form class="settings-form">
                             <div class="form-group">
                                 <label>System Name</label>
-                                <input type="text" value="E+Swasthya">
+                                <input type="text" name="system_name" value="E+Swasthya">
                             </div>
                             <div class="form-group">
-                                <label>Maintenance Mode</label>
-                                <label class="switch">
-                                    <input type="checkbox">
-                                    <span class="slider"></span>
-                                </label>
+                                <label>Contact Email</label>
+                                <input type="email" name="contact_email" value="support@eswasthya.com">
                             </div>
                             <div class="form-group">
-                                <label>Data Backup</label>
-                                <button class="backup-btn">Backup Now</button>
+                                <label>Session Timeout (minutes)</label>
+                                <input type="number" name="session_timeout" value="30">
                             </div>
+                            <button type="submit">Save Settings</button>
                         </form>
                     </div>
                     <div class="settings-card">
                         <h3>Security Settings</h3>
                         <form class="settings-form">
                             <div class="form-group">
-                                <label>Two-Factor Auth</label>
-                                <label class="switch">
-                                    <input type="checkbox" checked>
-                                    <span class="slider"></span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>Session Timeout</label>
-                                <select>
-                                    <option>15 minutes</option>
-                                    <option>30 minutes</option>
-                                    <option>1 hour</option>
+                                <label>Password Policy</label>
+                                <select name="password_policy">
+                                    <option value="standard">Standard</option>
+                                    <option value="strict">Strict</option>
+                                    <option value="custom">Custom</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Password Policy</label>
-                                <button class="policy-btn">Configure</button>
+                                <label>2FA Requirement</label>
+                                <select name="2fa_requirement">
+                                    <option value="none">None</option>
+                                    <option value="optional">Optional</option>
+                                    <option value="required">Required</option>
+                                </select>
                             </div>
+                            <button type="submit">Save Settings</button>
                         </form>
                     </div>
                 </div>
@@ -166,36 +151,25 @@
             <!-- Activity Log Section -->
             <section class="activity-section">
                 <h2>Activity Log</h2>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-user-plus"></i>
-                        </div>
-                        <div class="activity-details">
-                            <h4>New User Registration</h4>
-                            <p>John Doe registered as a patient</p>
-                            <span class="activity-time">2 minutes ago</span>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-file-upload"></i>
-                        </div>
-                        <div class="activity-details">
-                            <h4>Report Upload</h4>
-                            <p>Medical report uploaded by Dr. Smith</p>
-                            <span class="activity-time">15 minutes ago</span>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-cog"></i>
-                        </div>
-                        <div class="activity-details">
-                            <h4>System Update</h4>
-                            <p>System settings updated by Admin</p>
-                            <span class="activity-time">1 hour ago</span>
-                        </div>
+                <div class="activity-log">
+                    <!-- Activity logs will be displayed here -->
+                </div>
+            </section>
+
+            <!-- System Backup Section -->
+            <section class="backup-section">
+                <h2>System Backup</h2>
+                <div class="backup-card">
+                    <p>Create a backup of all system data including user information, reports, and settings.</p>
+                    <button class="backup-btn">
+                        <i class="fas fa-download"></i>
+                        Backup Now
+                    </button>
+                    <div class="backup-history">
+                        <h3>Recent Backups</h3>
+                        <ul class="backup-list">
+                            <!-- Backup history will be displayed here -->
+                        </ul>
                     </div>
                 </div>
             </section>

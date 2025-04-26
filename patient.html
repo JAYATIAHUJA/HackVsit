@@ -18,10 +18,21 @@
         </a>
         <div class="nav-links">
             <div class="auth-buttons">
-                <button class="login-btn">Login</button>
-                <button class="signup-btn">Sign Up</button>
+                <button class="login-btn" id="loginBtn">Login</button>
+                <button class="signup-btn" id="signupBtn">Sign Up</button>
                 <div id="google_translate_element"></div>
-
+            </div>
+            <!-- User Profile Section -->
+            <div class="user-profile" id="userProfile" style="display: none;">
+                <div class="user-info">
+                    <img src="default-avatar.png" alt="User Avatar" class="user-avatar" id="userAvatar">
+                    <span class="user-name" id="userName">User Name</span>
+                </div>
+                <div class="user-dropdown">
+                    <a href="#" class="dropdown-item"><i class="fas fa-user"></i> Profile</a>
+                    <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="#" class="dropdown-item" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
             </div>
             <!-- AI Chatbot Button -->
             <button class="chatbot-btn">
@@ -156,7 +167,7 @@
                 </div>
                 <h3>Yoga & Wellness</h3>
                 <p>Access personalized yoga and wellness programs</p>
-                <button class="feature-btn">Explore</button>
+                <a href="yoga-wellness.html" class="feature-btn">Explore</a>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">
@@ -174,9 +185,15 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Login to Your Account</h2>
-            <form class="login-form">
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
                 <button type="submit">Login</button>
                 <p class="form-footer">Don't have an account? <a href="#" class="switch-to-signup">Sign Up</a></p>
             </form>
@@ -188,11 +205,40 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Create New Account</h2>
-            <form class="signup-form">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
+            <form class="signup-form" id="signupForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth</label>
+                    <input type="date" id="dateOfBirth" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
                 <button type="submit">Sign Up</button>
                 <p class="form-footer">Already have an account? <a href="#" class="switch-to-login">Login</a></p>
             </form>
